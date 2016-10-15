@@ -198,7 +198,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../Classes $(SRCROOT)/../../angel/cocos2d/cocos";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../Classes $(SRCROOT)/../../../cocos2d/cocos";
 			};
 			name = Debug;
 		};
@@ -239,7 +239,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../Classes $(SRCROOT)/../../angel/cocos2d/cocos";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../Classes $(SRCROOT)/../../../cocos2d/cocos";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

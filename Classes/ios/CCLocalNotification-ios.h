@@ -19,7 +19,8 @@ namespace oke_ya{
 
 class LocalNotificationIos : public LocalNotification
 {
-    virtual void showAds() const override;
+    bool init() override;
+    void setSchedule(const int interval, const std::string& message, const int tag) override;
 };
 
 }
