@@ -52,3 +52,14 @@ LOCAL_SRC_FILES += $(shell find $(LOCAL_PATH)/../../../Vendor/CCLocalNotificatio
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../Vendor/CCLocalNotification/Classes
 ```
+
+### Edit `proj.android-studio/app/AndroidManifest.xml`
+
+```
+        <receiver android:name="com.oke_ya.cc_local_notification.LocalNotificationReceiver" android:process=":remote" />
+    </application>
+```
+
+## icon
+
+This plugin use `ic_launcher.png and` `ic_notice.png`.

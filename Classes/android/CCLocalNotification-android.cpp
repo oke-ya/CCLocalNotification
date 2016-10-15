@@ -1,3 +1,4 @@
+#include "CCLocalNotification.h"
 #include "CCLocalNotification-android.h"
 #include "platform/android/jni/JniHelper.h"
 #include "cocos2d.h"
@@ -7,7 +8,7 @@ using namespace cocos2d;
 namespace oke_ya{
 
 
-static const std::string helperClassName = "com/oke_ya/ccnatie_extension_template/CCLocalNotification";
+static const std::string helperClassName = "com/oke_ya/cc_local_notification/CCLocalNotification";
 
 LocalNotification* LocalNotification::getInstance()
 {
@@ -24,9 +25,21 @@ LocalNotification* LocalNotification::getInstance()
     return s_sharedLocalNotification;
 }
 
-void LocalNotificationAndroid::showAds() const
+bool LocalNotificationAndroid::init()
 {
-    JniHelper::callStaticVoidMethod(helperClassName, "showAds");
+  return true;
+}
+  
+void LocalNotificationAndroid::setSchedule(const int interval, const std::string& message, const int tag)
+{
+    JniMethodInfo methodInfo;
+    if(JniHelper::getStaticMethodInfo(methodInfo, helperClassName.c_str(), "setSchedule", "(ILjava/lang/String;I)V"))
+    {
+        JNIEnv* env = JniHelper::getEnv();
+        jstring jmessage = env->NewStringUTF(message.c_str());
+        methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID, interval, jmessage, tag);
+        env->DeleteLocalRef(jmessage);
+    }
 }
 
 }

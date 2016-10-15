@@ -18,6 +18,7 @@ class LocalNotification
 public:
     static LocalNotification* getInstance();
     static LocalNotification* s_sharedLocalNotification;
+    virtual ~LocalNotification() = default;
     virtual bool init() = 0;
     virtual void setSchedule(const int interval, const std::string& message, const int tag = 0) = 0;
 };
