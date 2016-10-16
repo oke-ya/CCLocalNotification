@@ -22,6 +22,7 @@ public:
     virtual bool init() = 0;
     virtual void setSchedule(const int interval, const std::string& message, const int tag = 0) = 0;
     virtual void setEnabled(bool b) = 0;
+    virtual bool isEnabled() = 0;
 };
 
 }

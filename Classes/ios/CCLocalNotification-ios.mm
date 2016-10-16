@@ -36,6 +36,9 @@ bool LocalNotificationIos::init()
 
 void LocalNotificationIos::setSchedule(const int interval, const std::string& message, const int tag)
 {
+    if(!isEnabled()){
+        return;
+    }
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.fireDate = [[NSDate date] dateByAddingTimeInterval:interval];
     notification.timeZone = [NSTimeZone defaultTimeZone];
@@ -50,13 +53,20 @@ void LocalNotificationIos::setSchedule(const int interval, const std::string& me
 
 void LocalNotificationIos::setEnabled(bool b)
 {
+    UIApplication* application = [UIApplication sharedApplication];
     if(b){
         UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [application registerUserNotificationSettings:settings];
     }else{
-        [[UIApplication sharedApplication] unregisterForRemoteNotifications];
+        [application cancelAllLocalNotifications];
+        [application unregisterForRemoteNotifications];
     }
+}
+
+bool LocalNotificationIos::isEnabled()
+{
+    return [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
 }
 
 }
