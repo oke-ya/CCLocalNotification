@@ -27,6 +27,7 @@ LocalNotification* LocalNotification::getInstance()
 
 bool LocalNotificationAndroid::init()
 {
+  JniHelper::callStaticVoidMethod(helperClassName, "init");
   return true;
 }
   
@@ -39,6 +40,16 @@ void LocalNotificationAndroid::setSchedule(const int interval, const std::string
         jstring jmessage = env->NewStringUTF(message.c_str());
         methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID, interval, jmessage, tag);
         env->DeleteLocalRef(jmessage);
+    }
+}
+
+void LocalNotificationAndroid::setEnabled(bool b)
+{
+    JniMethodInfo methodInfo;
+    if(JniHelper::getStaticMethodInfo(methodInfo, helperClassName.c_str(), "setEnabled", "(Z)V"))
+    {
+        JNIEnv* env = JniHelper::getEnv();
+        methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID, b);
     }
 }
 
