@@ -21,6 +21,7 @@ class LocalNotificationIos : public LocalNotification
 {
     bool init() override;
     void setSchedule(const int interval, const std::string& message, const int tag) override;
+    void setEnabled(bool b) override;
 };
 
 }

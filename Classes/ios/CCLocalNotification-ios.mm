@@ -31,10 +31,6 @@ LocalNotification* LocalNotification::getInstance()
 
 bool LocalNotificationIos::init()
 {
-    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types
-                                                                               categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     return true;
 }
 
@@ -52,5 +48,15 @@ void LocalNotificationIos::setSchedule(const int interval, const std::string& me
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
+void LocalNotificationIos::setEnabled(bool b)
+{
+    if(b){
+        UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }else{
+        [[UIApplication sharedApplication] unregisterForRemoteNotifications];
+    }
+}
 
 }
