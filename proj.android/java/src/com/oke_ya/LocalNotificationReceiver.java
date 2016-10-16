@@ -4,6 +4,7 @@ import org.cocos2dx.lib.Cocos2dxActivity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,10 @@ public class LocalNotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        ActivityManager am = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
+        if (am.getRunningTasks(1).get(0).topActivity.getPackageName().equals(context.getPackageName())) {
+            return;
+        }
         int notificationId = intent.getIntExtra("notification_id", 0);
         String message = intent.getStringExtra("message");
 

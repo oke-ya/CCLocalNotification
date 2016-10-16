@@ -58,6 +58,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../Vendor/CCLocalNotification/Classes
 ```
         <receiver android:name="com.oke_ya.cc_local_notification.LocalNotificationReceiver" android:process=":remote" />
     </application>
+    <uses-permission android:name="android.permission.GET_TASKS" />
 ```
 
 ## icon
