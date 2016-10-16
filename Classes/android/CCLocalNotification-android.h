@@ -22,6 +22,7 @@ class LocalNotificationAndroid : public LocalNotification
     bool init();
     void setSchedule(const int interval, const std::string& message, const int tag = 0);
     void setEnabled(bool b);
+    bool isEnabled();
 };
 
 }

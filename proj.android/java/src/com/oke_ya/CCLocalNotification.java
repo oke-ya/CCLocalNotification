@@ -59,6 +59,10 @@ public class CCLocalNotification {
         }
     }
 
+    public static boolean isEnabled() {
+        return mEnabled;
+    }
+
     private static PendingIntent getPendingIntent(String message, int tag) {
         Activity activity = Cocos2dxHelper.getActivity();
         Intent i = new Intent(mContext, LocalNotificationReceiver.class);

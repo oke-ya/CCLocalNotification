@@ -53,4 +53,19 @@ void LocalNotificationAndroid::setEnabled(bool b)
     }
 }
 
+bool LocalNotificationAndroid::isEnabled()
+{
+    JniMethodInfo methodInfo;
+    if(JniHelper::getStaticMethodInfo(methodInfo, helperClassName.c_str(), "isEnabled", "()Z"))
+    {
+        JNIEnv* env = JniHelper::getEnv();
+        jboolean jbool = methodInfo.env->CallStaticBooleanMethod(methodInfo.classID, methodInfo.methodID);
+        methodInfo.env->DeleteLocalRef(methodInfo.classID);
+        bool b = (jbool == JNI_TRUE);
+        return b;
+    }else{
+      return false;
+    }
+}
+
 }
