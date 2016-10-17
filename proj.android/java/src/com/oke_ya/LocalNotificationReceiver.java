@@ -1,6 +1,5 @@
 package com.oke_ya.cc_local_notification;
 
-import org.cocos2dx.lib.Cocos2dxActivity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -24,8 +23,7 @@ public class LocalNotificationReceiver extends BroadcastReceiver {
         }
         int notificationId = intent.getIntExtra("notification_id", 0);
         String message = intent.getStringExtra("message");
-
-        Intent i = new Intent(context, Cocos2dxActivity.class);
+        Intent i = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
         i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
         Resources resources = context.getResources();
