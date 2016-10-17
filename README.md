@@ -4,7 +4,7 @@
 
 ```
 $ cd YOUR_APP_ROOT
-$ git submodule add YOUR_REPOS_URL Vendor/CCLocalNotification
+$ git submodule add https://github.com/oke-ya/CCLocalNotification.git Vendor/CCLocalNotification
 ```
 
 ## Settings for ios
@@ -63,4 +63,4 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../Vendor/CCLocalNotification/Classes
 
 ## icon
 
-This plugin use `ic_launcher.png and` `ic_notice.png`.
+You should add `ic_notice.png` for android.
