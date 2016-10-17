@@ -33,6 +33,9 @@ public class LocalNotificationReceiver extends BroadcastReceiver {
         String appName = context.getString(resources.getIdentifier("app_name", "string", packageName));
         int smallIcon = resources.getIdentifier("ic_notice" , "mipmap", packageName);
         int icon = resources.getIdentifier("ic_launcher" , "mipmap", packageName);
+        if(smallIcon == 0){
+            smallIcon = icon;
+        }
         Bitmap largeIcon = BitmapFactory.decodeResource(resources, icon);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
 
