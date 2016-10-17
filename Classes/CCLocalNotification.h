@@ -16,6 +16,7 @@ namespace oke_ya{
 class LocalNotification
 {
 public:
+    static constexpr auto VERSION = "0.6.0";
     static LocalNotification* getInstance();
     static LocalNotification* s_sharedLocalNotification;
     virtual ~LocalNotification() = default;
