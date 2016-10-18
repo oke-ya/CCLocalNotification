@@ -64,3 +64,14 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../Vendor/CCLocalNotification/Classes
 ## icon
 
 You should add `ic_notice.png` for android.
+
+## API
+
+```
+#include "CCLocalNotification.h"
+...
+auto localNotification = LocalNotification::getInstance();
+localnotification->setEnabled(true);
+localnotification->isEnabled();
+localnotification->setSchedule(60, "Take 60 sec.");
+```
