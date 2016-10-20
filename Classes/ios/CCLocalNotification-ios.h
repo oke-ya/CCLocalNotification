@@ -19,10 +19,13 @@ namespace oke_ya{
 
 class LocalNotificationIos : public LocalNotification
 {
+public:
     bool init() override;
     void setSchedule(const int interval, const std::string& message, const int tag) override;
     void setEnabled(bool b) override;
     bool isEnabled() override;
+private:
+    bool _enabled { false };
 };
 
 }
