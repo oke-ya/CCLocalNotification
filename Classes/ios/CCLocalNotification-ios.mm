@@ -57,14 +57,14 @@ void LocalNotificationIos::setSchedule(const int interval, const std::string& me
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
-void LocalNotificationIos::setEnabled(bool enabled)
+void LocalNotificationIos::setEnabled(bool enabled, bool jumpToNativeSetting)
 {
     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:KEY];
     _enabled = enabled;
     if(!enabled){
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
     }
-    if(enabled && ![[UIApplication sharedApplication] isRegisteredForRemoteNotifications]){
+    if(enabled && jumpToNativeSetting && ![[UIApplication sharedApplication] isRegisteredForRemoteNotifications]){
         NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
         [[UIApplication sharedApplication] openURL:url];
     }

@@ -43,7 +43,7 @@ void LocalNotificationAndroid::setSchedule(const int interval, const std::string
     }
 }
 
-void LocalNotificationAndroid::setEnabled(bool b)
+void LocalNotificationAndroid::setEnabled(bool b, bool jumpToNativeSetting)
 {
     JniMethodInfo methodInfo;
     if(JniHelper::getStaticMethodInfo(methodInfo, helperClassName.c_str(), "setEnabled", "(Z)V"))
