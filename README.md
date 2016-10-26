@@ -28,7 +28,7 @@ $ git submodule add https://github.com/oke-ya/CCLocalNotification.git Vendor/CCL
 ```
 include ':libcocos2dx'
 project(':libcocos2dx').projectDir = new File(settingsDir, '../cocos2d/cocos/platform/android/libcocos2dx')
-include 'natie_extension_template'
+include 'local_notification'
 project(':local_notification').projectDir = new File(settingsDir, '../Vendor/CCLocalNotification/proj.android')
 ```
 
